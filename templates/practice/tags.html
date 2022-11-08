@@ -3,4 +3,35 @@
 {% block title %}Tags{% endblock %}
 {% block main %}
   <h2>Tags</h2>
-{% endblock %}
+  <ul>
+      {% for beatle in beatles|dictsort:'firstname' %}
+        <li>{{ beatle.firstname }} {{ beatle.lastname }}</li>
+      {% endfor %}
+  </ul>
+  <br />
+  <ul>
+    {% for joke in joke_list %}
+      <li>{{ joke.question }}</li>
+    {% endfor %}
+  </ul>
+  <br />
+  <ol>
+    {% for item, remaining in inventory.items %}
+      <li>{{ item }}: {{ remaining }}</li>
+    {% endfor %}
+  </ol>
+  <br />
+  <ul>
+    {% for joke in joke_list %}
+      <li>{{ joke.question }}</li>
+    {% empty %}
+      <li>Sorry, there are no jokes.</li>
+    {% endfor %}
+  </ul>
+  <br />
+  <ol>
+    {% for fruit in fruits %}
+      <li class="{% cycle 'odd' 'even' %}">{{ fruit }}</li>
+    {% endfor %}
+  </ol>
+{% endblock main%}
